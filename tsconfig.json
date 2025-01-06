@@ -109,7 +109,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "./src/chapters/01-type-annotation/01-type-annotation.ts",
-    "./src/chapters/02-function-annotation/01-function-parameter-type.ts"
+    "typescript/01-type-annotation/01-type-annotation.ts",
+    "typescript/02-function-annotation/01-function-parameter-type.ts"
   ]
 }
