@@ -9,8 +9,13 @@
 // 매개변수, 인스턴스 프로퍼티의 타입을 지정해 TypeScript 오류를 해결합니다.
 
 {
+  type ClassMember = '강사' | '학생';
+
   class Player {
-    constructor(nickname, role) {
+    nickname: string;
+    role: ClassMember;
+
+    constructor(nickname: string, role: ClassMember) {
       this.nickname = nickname;
       this.role = role;
     }
