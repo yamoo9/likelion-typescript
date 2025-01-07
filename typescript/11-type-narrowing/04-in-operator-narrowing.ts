@@ -20,8 +20,8 @@
   const talk = (creature: Cat | Dog) => {
     console.log(creature.name);
     // 크리쳐(creature)가 가진 속성 포함 여부 확인을 위한 타입 범위 축소를 작성합니다.
-    creature.meow();
-    creature.bark();
+    if ('meow' in creature) creature.meow();
+    if ('bark' in creature) creature.bark();
   };
 
   const kitty: Cat = {
@@ -48,8 +48,13 @@
 
   // 무비, TV 드라마 타입 별 상영시간을 문제 없이 반환하도록 타입 범위를 축소합니다.
   function getRuntime(media: Movie | TV_Drama): number | void {
-    return media.episodeDuration * media.numberOfEpisodes;
-    return media.duration;
+    if ('episodeDuration' in media && 'numberOfEpisodes' in media) {
+      return media.episodeDuration * media.numberOfEpisodes;
+    }
+
+    if ('duration' in media) {
+      return media.duration;
+    }
   }
 
   getRuntime({
