@@ -15,13 +15,16 @@
   // - 익스클레메이션(Exclamation)
   // - 타입 단언(Type Assertion)
   // - 제네릭(Generic)
-  const inputEl = document.querySelector('#username');
+  const inputEl = document.querySelector<HTMLInputElement>('#username');
 
   // 🧐 TypeScript ...
   // - inputEl 변수 참조는 null일 가능성이 있습니다.
   // - Element 타입은 value 속성이 포함되어 있지 않습니다.
-  console.log(inputEl.value);
+  console.log(inputEl?.value);
 
-  const buttonEl = document.querySelector('.button');
-  console.log(buttonEl.type);
+  const buttonEl = document.querySelector<HTMLButtonElement>('.button'); // <button type="button" class="button">...</button>, <a class="button">...</a>
+
+  if (buttonEl) {
+    console.log(buttonEl.type);
+  }
 }
