@@ -8,8 +8,12 @@
 
 {
   function printLetters(words?: string): void {
-    for (const letter of words) {
-      console.log(letter);
+    if (words) {
+      for (const letter of words) {
+        console.log(letter);
+      }
+    } else {
+      console.error('words가 존재하지 않습니다.');
     }
   }
 
