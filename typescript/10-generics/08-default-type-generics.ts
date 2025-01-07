@@ -6,7 +6,10 @@
 // --------------------------------------------------------------------------
 
 {
-  function makeRepeatArray<T>(thing?: T, repeatCount: number = 2): T[] {
+  function makeRepeatArray<T = undefined>(
+    thing?: T,
+    repeatCount: number = 2
+  ): T[] {
     return Array(repeatCount).fill(thing);
   }
 
