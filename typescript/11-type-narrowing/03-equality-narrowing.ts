@@ -11,7 +11,7 @@
     value1: string | number,
     value2: string | boolean
   ): boolean {
-    if (value1 == value2) {
+    if (value1 === value2) {
       // value1, value2 모두 string 타입
       console.log(value1.toLowerCase());
       console.log(value2.toLowerCase());
