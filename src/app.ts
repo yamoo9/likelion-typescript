@@ -10,14 +10,14 @@
 // 여러 정적 에셋 디렉토리를 사용하려면 express.static 미들웨어 함수를 여러 번 호출합니다.
 //
 // --------------------------------------------------------------------------
-
+import 'dotenv/config';
 import express from 'express';
 import type { Response, Express, Request, NextFunction } from 'express';
 
 const app: Express = express();
 
-const HOSTNAME = 'localhost';
-const PORT = 5000;
+const HOSTNAME = process.env.HOSTNAME ?? 'localhost';
+const PORT = Number(process.env.PORT) ?? 4000;
 const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
 /* Routing ------------------------------------------------------------------ */
