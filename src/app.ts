@@ -38,7 +38,17 @@ app.get(
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         </head>
         <body>
-          <h1>웰컴 <abbr title="Application Programming Interface">API</abbr> 서버</h1>
+          <main>
+            <h1>
+              웰컴 <abbr title="Application Programming Interface" style="cursor: help">API</abbr> 서버
+            </h1>
+            <nav>
+              <ul>
+                <li><a href="/api/users">사용자(users)</a></li>
+                <li><a href="/api/products">상품(products)</a></li>
+              </ul>
+            </nav>
+          </main>
         </body>
       </html>
     `);
