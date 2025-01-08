@@ -16,7 +16,9 @@ import type { Response, Express, Request, NextFunction } from 'express';
 
 const app: Express = express();
 
-const HOSTNAME = process.env.HOSTNAME ?? 'localhost';
+// for Windows Users
+const HOSTNAME = 'localhost';
+// const HOSTNAME = process.env.HOSTNAME ?? 'localhost';
 const PORT = Number(process.env.PORT) ?? 4000;
 const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
