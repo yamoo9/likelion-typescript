@@ -5,8 +5,9 @@
 import 'dotenv/config';
 import express from 'express';
 import type { Express, Request } from 'express';
+import type { RequestUser, User } from './types/user';
+import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import type User from './types/user';
 
 /* CONFIG. ------------------------------------------------------------------ */
 
@@ -53,13 +54,36 @@ app.use(express.json());
 // CREATE ----------------------------------------------------------------------
 
 // `POST /api/users`
-app.post('/api/users', (request: Request<{}, {}, User>, response) => {
-  // 클라이언트 요청(JSON)
-  console.log(request.body);
+app.post(
+  '/api/users',
+  async (request: Request<{}, {}, RequestUser>, response) => {
+    // 클라이언트 요청(JSON)
+    console.log(request.body);
 
-  // 클라이언트에 응답
-  response.status(201).json({});
-});
+    // 서버에서 프로그래밍
+    // data/users.json 파일 읽기
+    // fsPromises.readFile()
+    const usersString = await readFile(
+      resolve(__dirname, './data/users.json'),
+      {
+        encoding: 'utf-8',
+      }
+    );
+
+    // JSON forat string - [ JSON.parse(jsonString) ] -> JavaScript Object
+    const usersJSON: User[] = JSON.parse(usersString);
+
+    // data/users.json 파일에 쓰기
+    // fsPromises.writeFile()
+
+    // 클라이언트에 응답
+
+    // 성공한 경우
+    response.status(201).json({});
+
+    // 실패한 경우
+  }
+);
 
 // READ ------------------------------------------------------------------------
 
