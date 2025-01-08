@@ -12,17 +12,23 @@
 // --------------------------------------------------------------------------
 
 import express from 'express';
+import type { Response, Express, Request, NextFunction } from 'express';
 
-const app /*: Application */ = express(); // const app = new Application()
+const app: Express = express();
 
 const HOSTNAME = 'localhost';
 const PORT = 5000;
 const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
-app.get('/', (request, response, nextFunction) => {
-  // 서버 -> 클라이언트 응답(response)
-  response.send('<h1>Hello Express.js & TypeScript</h1>');
-});
+/* Routing ------------------------------------------------------------------ */
+
+app.get(
+  '/',
+  (request: Request, response: Response, nextFunction: NextFunction) => {
+    // 서버 -> 클라이언트 응답(response)
+    response.send('<h1>Hello Express.js & TypeScript</h1>');
+  }
+);
 
 app.listen(PORT, HOSTNAME, () => {
   console.log(MESSAGE);
