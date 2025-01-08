@@ -96,9 +96,43 @@ export const putUserHandler = async (
 
 // `PATCH /api/users/:id`
 export const patchUserHandler = async (
-  request: Request,
+  request: Request<{ id: string }, {}, RequestUser>,
   response: Response
-) => {};
+) => {
+  const id = Number(request.params.id);
+  const requrestBody = request.body;
+
+  try {
+    const users = await readUsers();
+    const user = users.find((user) => user.id === Number(id));
+
+    if (user) {
+      const updatedUser = {
+        ...user,
+        ...requrestBody,
+      };
+
+      const willUpdateUsers = users.map((user) => {
+        if (user.id === id) {
+          return updatedUser;
+        } else {
+          return user;
+        }
+      });
+
+      await writeUsers(willUpdateUsers);
+      response.status(200).json(updatedUser);
+    } else {
+      response.status(404).json({
+        message: `요청한 ID ${id} 사용자 정보를 찾을 수 없습니다.`,
+      });
+    }
+  } catch (error: unknown) {
+    response.status(500).json({
+      message: '알 수 없는 오류가 발생했습니다.',
+    });
+  }
+};
 
 // DELETE ---------------------------------------------------------------------
 
