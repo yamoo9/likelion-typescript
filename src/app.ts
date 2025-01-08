@@ -28,7 +28,20 @@ app.get(
   '/',
   (request: Request, response: Response, nextFunction: NextFunction) => {
     // 서버 -> 클라이언트 응답(response)
-    response.send('<h1>Hello Express.js & TypeScript</h1>');
+    response.send(/* html */ `
+      <!DOCTYPE html>
+      <html lang="ko-KR">
+        <head>
+          <meta charset="UTF-8" />
+          <title>간단한 API 서버 구동 (with TypeScript & Express.js)</title>
+          <meta name="description" content="TypeScript를 활용해 Express 앱을 구동시킵니다." />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        </head>
+        <body>
+          <h1>웰컴 <abbr title="Application Programming Interface">API</abbr> 서버</h1>
+        </body>
+      </html>
+    `);
   }
 );
 
