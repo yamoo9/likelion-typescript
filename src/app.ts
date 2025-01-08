@@ -106,6 +106,30 @@ app.get('/api/users', async (request, response) => {
 });
 
 // `GET /api/users/:id`
+app.get('/api/users/:id', async (request, response) => {
+  // request paramters /:id
+  const { id } = request.params;
+
+  try {
+    const users = await readUsers();
+
+    // 요청된 ID 값과 일치하는 사용자가 존재하는 지 검토
+    const requestedUser = users.find((user) => user.id === Number(id));
+    if (requestedUser) {
+      // 요청한 사용자 정보가 있을 경우, 응답
+      response.status(200).json(requestedUser);
+    } else {
+      // 요청한 사용자 정보가 없을 경우, 응답
+      response.status(404).json({
+        message: `요청한 사용자 ID "${id}" 정보가 존재하지 않습니다. 😥`,
+      });
+    }
+  } catch (error: unknown) {
+    response.status(500).json({
+      message: '알 수 없는 오류가 발생했습니다! 😥',
+    });
+  }
+});
 
 // UPDATE ---------------------------------------------------------------------
 
