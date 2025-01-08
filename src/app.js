@@ -16,8 +16,8 @@ const express = require('express');
 const app /*: Application */ = express(); // const app = new Application()
 
 const HOSTNAME = 'localhost';
-const PORT = 4000;
-const MESSAGE = `웹 서비스 구동 : http://${HOSTNAME}:${PORT}`;
+const PORT = 5000;
+const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
 app.get('/', (request, response, nextFunction) => {
   // 서버 -> 클라이언트 응답(response)
