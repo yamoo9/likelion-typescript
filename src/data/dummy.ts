@@ -1,4 +1,4 @@
-import User from '../types/user';
+import { User } from '../types/user';
 
 const dummyUser: User = {
   id: 1,

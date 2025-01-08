@@ -14,7 +14,6 @@ const HOSTNAME = 'localhost';
 const PORT = 4000;
 
 const server = http.createServer((request /* 요청 */, response /* 응답 */) => {
-
   /* 요청(Request) -------------------------------------------------------------- */
   console.log(request.url);
   console.log(request.query);
@@ -32,8 +31,7 @@ const server = http.createServer((request /* 요청 */, response /* 응답 */) =
         <h1>타입스크립트 에센셜</h1>
       </body>
     </html>
-    `);
-
+  `);
 });
 
 server.listen(PORT, HOSTNAME, () => {
