@@ -5,6 +5,7 @@
     "dev": "nodemon src/app.js"
   },
   "devDependencies": {
+    "@types/express": "5.0.0",
     "@types/lodash": "4.17.14",
     "@types/node": "22.10.5",
     "nodemon": "3.1.9",

@@ -11,7 +11,7 @@
 //
 // --------------------------------------------------------------------------
 
-const express = require('express');
+import express from 'express';
 
 const app /*: Application */ = express(); // const app = new Application()
 
