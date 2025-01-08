@@ -92,9 +92,17 @@ app.post(
 // READ ------------------------------------------------------------------------
 
 // `GET /api/users`
-app.get('/api/users', (request, response) => {
-  // Response (to Client)
-  // response.status(200).json(dummyUserList);
+app.get('/api/users', async (request, response) => {
+  try {
+    const users = await readUsers();
+    // throw new Error('oops');
+
+    response.status(200).json(users);
+  } catch (error: unknown) {
+    response.status(500).json({
+      message: '알 수 없는 오류가 발생했습니다! 😥',
+    });
+  }
 });
 
 // `GET /api/users/:id`
