@@ -7,5 +7,3 @@ export interface User {
 
 // export type RequestUser = Pick<User, 'age' | 'gender' | 'name'>;
 export type RequestUser = Omit<User, 'id'>;
-
-export default User;
