@@ -34,7 +34,19 @@ app.use(express.static(resolve(__dirname, '../public')));
 //
 // --------------------------------------------------------------------------
 
+// GET
 app.get('/', entryHandler);
+
+// POST
+app.post('/', (request, response) => {
+  // 클라이언트 요청 URL
+  console.log(request.url);
+
+  // 서버 -> 클라이언트 응답
+  response.status(201 /* Created */).send({
+    message: 'POST 요청이 홈페이지로부터 주어졌습니다.',
+  });
+});
 
 /* Listening ---------------------------------------------------------------- */
 
