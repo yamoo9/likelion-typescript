@@ -51,15 +51,6 @@ app.use(express.static(resolve(__dirname, '../public')));
 
 /* Users API ---------------------------------------------------------------- */
 
-const dummyUser: User = {
-  id: 1,
-  name: '박하신',
-  gender: '여성',
-  age: 25,
-};
-
-const dummyUserList: User[] = [dummyUser];
-
 // CREATE ----------------------------------------------------------------------
 
 // `POST /api/users`
@@ -69,7 +60,7 @@ const dummyUserList: User[] = [dummyUser];
 // `GET /api/users`
 app.get('/api/users', (request, response) => {
   // Response (to Client)
-  response.status(200).json(dummyUserList);
+  // response.status(200).json(dummyUserList);
 });
 
 // `GET /api/users/:id`
