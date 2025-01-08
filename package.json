@@ -1,8 +1,9 @@
 {
   "name": "typescript-essentials",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.ts"
+    "start": "node server/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc -p ."
   },
   "devDependencies": {
     "@types/express": "5.0.0",
