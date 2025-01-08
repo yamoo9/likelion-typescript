@@ -9,7 +9,7 @@ const usersRouter = Router();
 
 // `POST /api/users`
 usersRouter.post(
-  '/api/users',
+  '/',
   async (request: Request<{}, {}, RequestUser>, response) => {
     // 클라이언트 요청 정보
     // console.log(request.body);
@@ -45,7 +45,7 @@ usersRouter.post(
 // READ ------------------------------------------------------------------------
 
 // `GET /api/users`
-usersRouter.get('/api/users', async (request, response) => {
+usersRouter.get('/', async (request, response) => {
   try {
     const users = await readUsers();
     // throw new Error('oops');
@@ -59,7 +59,7 @@ usersRouter.get('/api/users', async (request, response) => {
 });
 
 // `GET /api/users/:id`
-usersRouter.get('/api/users/:id', async (request, response) => {
+usersRouter.get('/:id', async (request, response) => {
   // request paramters /:id
   const { id } = request.params;
 
