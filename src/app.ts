@@ -8,7 +8,7 @@ import type { Express, Request } from 'express';
 import type { RequestUser, User } from './types/user';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { readUsers } from './lib/users';
+import { readUsers, writeUsers } from './lib/users';
 
 /* CONFIG. ------------------------------------------------------------------ */
 
@@ -59,19 +59,33 @@ app.post(
   '/api/users',
   async (request: Request<{}, {}, RequestUser>, response) => {
     // 클라이언트 요청 정보
-    console.log(request.body);
+    // console.log(request.body);
 
     // 서버 프로그래밍
     // 1. 데이터 파일 읽기
     const users = await readUsers();
 
+    // 새롭게 생성될 사용자(User) 객체
+    const newId = users.length + 1;
+    // const newId = crypto.randomUUID();
+
+    const newUser: User = {
+      id: newId,
+      ...request.body,
+    };
+
     // 2. 데이터 파일 쓰기
-
-    // 클라이언트에 응답
-    // 성공한 경우
-    response.status(201).json({});
-
-    // 실패한 경우
+    try {
+      // 클라이언트에 응답
+      // 성공한 경우
+      await writeUsers(newUser);
+      response.status(201).json(newUser);
+    } catch (error: unknown) {
+      // 실패한 경우
+      response.status(401).json({
+        message: '이런... 사용자 정보 생성에 실패했습니다.. 😭',
+      });
+    }
   }
 );
 
