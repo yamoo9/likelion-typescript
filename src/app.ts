@@ -13,6 +13,7 @@
 import 'dotenv/config';
 import express from 'express';
 import type { Express } from 'express';
+import { resolve } from 'node:path';
 import entryHandler from './handlers/entry';
 import greetingMessage from './middlewares/greetingMessage';
 
@@ -25,7 +26,9 @@ const PORT = Number(process.env.PORT) ?? 4000;
 const MESSAGE = `웹 서버 구동 : http://${HOSTNAME}:${PORT}`;
 
 /* Middleware --------------------------------------------------------------- */
+
 app.use(greetingMessage);
+app.use(express.static(resolve(__dirname, '../public')));
 
 /* Routing ------------------------------------------------------------------ */
 
